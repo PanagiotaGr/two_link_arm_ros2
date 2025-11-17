@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot name="two_link_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Βάση -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 1ος σύνδεσμος -->
+  <link name="link1">
+    <visual>
+      <!-- το κέντρο του link1 είναι στη μέση του μήκους -->
+      <origin xyz="0.15 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.02 0.02"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.1 0.1 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 2ος σύνδεσμος -->
+  <link name="link2">
+    <visual>
+      <origin xyz="0.1 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2 0.02 0.02"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.1 0.8 0.1 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Άρθρωση 1: περιστροφή γύρω από z, στο base -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="10" velocity="2.0"/>
+  </joint>
+
+  <!-- Άρθρωση 2: στην άκρη του link1 -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0.3 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="10" velocity="2.0"/>
+  </joint>
+
+</robot>
+
