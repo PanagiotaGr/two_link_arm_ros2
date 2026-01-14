@@ -154,4 +154,3 @@ Use `joint_state_publisher_gui` to adjust joint angles manually and verify URDF 
 ## Author
 Panagiota Grosdouli
 
-Panagiota Grosdouli
